@@ -1,0 +1,25 @@
+
+{%extends 'shop/layouts/main.html'%}
+
+
+{% block content%}
+
+    <section class="products-list">
+        {%include 'shop/inc/message.html'%}
+        <h3 class="mb-3">Categories</h3>
+        <hr style="border-color: rgb(9, 9, 8);">
+        
+        <div class="products-container">
+            {% for item in catagory %}
+            <a href="{% url 'Products' item.name %}">
+            <div class="cart" >
+
+                <div class="img" > <img src="{{item.image.url}}"> </div>
+                <div class="title">{{item.name}}</div>
+                <div class="description" >{{item.description}}</div>
+            </div>
+            </a>    
+            {%endfor%}
+        </div>
+    </section>
+{% endblock content%}

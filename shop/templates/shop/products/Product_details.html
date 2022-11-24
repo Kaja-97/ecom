@@ -1,0 +1,80 @@
+{%extends 'shop/layouts/main.html'%}
+
+{% block content%}
+
+
+<section class="bg-light py-4 my-5 ">
+    {%include 'shop/inc/message.html'%}
+    <div class="container" >
+        <div class="row">
+            
+            <div class="text-center col-12 my-3" >
+                <h3 class="mb-3">{{product}}</h3>
+                <hr style="border-color: rgb(9, 9, 8); ">
+                
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+
+                        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home </a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'Products' %}">Catagories </a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'Products' product.Catagory.name  %}">{{product.Catagory.name}} </a></li>
+                        <li class="breadcrumb-item">{{product}}</li>
+
+                    </ol>
+                </nav>
+            
+            </div>
+
+            <div class="container col-6 my-3 pic-box">
+                {% if product.trending %}
+                <div class="hot">HOT</div>
+                {% endif %}
+                <img src="{{product.product_image.url}} " class="pimage" alt="product"> 
+                
+            </div>
+            <div class="col-6 my-3">
+                
+                <h5 class="text-success" >{{product}}</h5>
+                
+
+                <p class="text-primary">Selling Price-{{product.selling_price}}</p>
+
+                <p class="text-danger">New price-<s>{{product.new_price}}</s></p>
+                <p>Seller Place- {{seller.place}}</p>
+                <p>Stock available-{{product.stock}}</p>
+                <p>About-{{product.description}}</p>
+                <p>Seller Name-{{product.Seller_ID}}</p>
+                <p>Seller Number- {{seller.Phone_Number}}</p>
+                <p>Seller E-Mail- {{seller.Email}}</p>
+                
+                
+                <div class="my-3">
+                    {% if product.selling_price > 0 %}
+                    <button class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</button>
+                    
+                    {% endif %}
+                    <button class="btn btn-danger"><i class="fa fa-heart"></i> </button>
+                    
+                    
+                </div>
+                
+            </div>    
+            
+        </div>
+        <hr style="border-color: rgb(9, 9, 8); ">
+        <div class="row">
+            <h3 class="mb-3 text-center">description</h3>
+                <hr style="border-color: rgb(9, 9, 8); ">
+                
+                <p>Conclusion:
+                    In this way, you can create the footer of the website in HTML and CSS. If you are facing any type of problem in understanding any line of code of HTML and CSS then you can click here for learning all the tags and properties of HTML and CSS.
+                    
+                    If you found this article useful then must like it and follow us. Also share it because sharing is caring and comment below if you have any queries.
+                    
+                    Thanks for reading this article.</p>
+        </div>
+    </div>
+    
+</section>
+
+{% endblock content%}

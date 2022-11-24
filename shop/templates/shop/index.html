@@ -1,0 +1,53 @@
+
+{%extends 'shop/layouts/main.html'%}
+
+{% block content%}
+    
+    {% include 'shop/inc/Slider.html' %}
+    
+    <!-- {% for item in products %}
+    {{item.name}}
+    <br>
+    {% endfor %} -->
+
+    
+    {%include 'shop/inc/message.html'%}
+<section class="products-list ">
+    
+    <div class="container" >
+        <div class="row">
+            <h3 class="mb-6">Trending</h3>
+            <hr style="border-color: rgb(9, 9, 8); border-width: 5px; ">
+            
+            <div class="products-container col-2 " >
+            
+                {% for item in products %}
+                
+                <a href="{% url 'Product_details' item.Catagory item.name %}">
+                <div class="cart" >
+                    <div>
+                        <div class="pic-box">
+                            {% if item.trending %}
+                            <div class="hot">HOT</div>
+                            {% endif %}
+                        </div>
+                        <div class="img" > <img src="{{item.product_image.url}}"> </div>
+                    </div>
+                    
+                    <div class="title">{{item.name}}</div>
+                    <div class="description" >
+                        <span class="float-start"><s>Rs.{{item.new_price}}</s></span>
+                        <span class="float-end">Rs.{{item.selling_price}}</span>
+                    </div>
+                    
+                </div>
+                </a>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+    
+    
+</section>
+
+{% endblock content%}

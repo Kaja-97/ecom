@@ -1,0 +1,15 @@
+
+
+<div class="products-container">
+    {% for item in catagory %}
+    <a href="#">
+    <div class="cart" >
+
+        <div class="img" > <img src="{{item.product_image.url}}"> </div>
+        <div class="title">{{item.name}}</div>
+        <span class="float-start"><s>Rs.{{item.new_price}}</s></span>
+        <span class="float-end">Rs.{{item.selling_price}}</span>
+    </div>
+    </a>    
+    {%endfor%}
+</div>

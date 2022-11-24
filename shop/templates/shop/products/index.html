@@ -1,0 +1,49 @@
+
+{%extends 'shop/layouts/main.html'%}
+
+{% block content%}
+   
+<section class="products-list ">
+    <div class="container" >
+        <div class="row">
+            <h3 class="mb-6">{{catyagory_name}}</h3>
+            <hr style="border-color: rgb(9, 9, 8); ">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+
+                    <li class="breadcrumb-item"><a href="{% url 'home' %}">Home </a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'Products' %}">Categories </a></li>
+                    
+                </ol>
+                {%include 'shop/inc/message.html'%}
+            </nav>
+            <div class="products-container col-2 " >
+            
+                {% for item in product %}
+                <a href="{% url 'Product_details' catyagory_name item.name %}">
+                <div class="cart" >
+                    <div>
+                        <div class="pic-box">
+                            {% if item.trending %}
+                            <div class="hot">HOT</div>
+                            {% endif %}
+                        </div>
+                        <div class="img" > <img src="{{item.product_image.url}}"> </div>
+                    </div>
+                    
+                    <div class="title">{{item.name}}</div>
+                    <div class="description" >
+                        <span class="float-start"><s>Rs.{{item.new_price}}</s></span>
+                        <span class="float-end">Rs.{{item.selling_price}}</span>
+                    </div>
+                    
+                </div>
+                </a>    
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+    
+    
+</section>
+{% endblock content%}
