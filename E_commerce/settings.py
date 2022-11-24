@@ -17,7 +17,8 @@ import django_heroku
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -83,13 +84,14 @@ WSGI_APPLICATION = 'E_commerce.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'e_commerce',
+        'NAME': os.path.join(BASE_DIR, os.path.pardir, 'e_commerce', 'db.sqlite3'),
         'HOST':'localhost',
         'USER':'root',
         'PASSWORD':'',
         'PORT':'3306'
     }
 }
+
 
 
 # Password validation
@@ -135,8 +137,8 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 django_heroku.settings(locals())
 
 
-STATIC_URL = 'static/'
-MEDIA_URL = '/images/'
+# STATIC_URL = 'static/'
+# MEDIA_URL = '/images/'
 
 
 # Default primary key field type
